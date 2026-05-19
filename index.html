@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aula Virtual - Fundamentos de Python</title>
+    <style>
+        :root {
+            --primary-color: #0033A0; /* Azul Institucional UASD */
+            --secondary-color: #F2F2F2;
+            --text-color: #333333;
+            --accent-color: #FFC000;
+            --success-color: #2e7d32;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0; padding: 0; color: var(--text-color); line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color); color: white;
+            padding: 2rem; text-align: center;
+        }
+        nav {
+            background-color: #002266; display: flex; justify-content: center;
+            padding: 1rem; position: sticky; top: 0; z-index: 100;
+            flex-wrap: wrap; /* Para accesibilidad en móviles */
+        }
+        nav a {
+            color: white; text-decoration: none; margin: 5px 15px;
+            font-weight: bold; transition: color 0.3s;
+        }
+        nav a:hover { color: var(--accent-color); }
+        .container {
+            max-width: 900px; margin: 2rem auto; padding: 0 20px;
+        }
+        section {
+            background: var(--secondary-color); margin-bottom: 2rem;
+            padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        h2 { color: var(--primary-color); border-bottom: 2px solid var(--accent-color); padding-bottom: 5px; }
+        h3 { color: #002266; margin-top: 1.5rem; }
+        .btn {
+            display: inline-block; background-color: var(--primary-color); color: white;
+            padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;
+            margin-top: 10px; margin-right: 10px; transition: background-color 0.3s, transform 0.2s;
+            border: none; cursor: pointer;
+        }
+        .btn:hover { background-color: #002266; transform: translateY(-1px); }
+        .btn-secondary {
+            background-color: transparent; color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        .btn-secondary:hover { background-color: var(--primary-color); color: white; }
+        footer {
+            background-color: var(--primary-color); color: white;
+            text-align: center; padding: 1rem; margin-top: 2rem;
+        }
+        .video-container {
+            position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%;
+            margin-top: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        }
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>💻 Fundamentos de Python</h1>
+        <p>Unidad 1: ¡Hola, Mundo! Tu primer encuentro con el código</p>
+        <p><em>Prof. Kalashnikov Bello Gómez</em></p>
+    </header>
+
+    <nav>
+        <a href="#bienvenida">Bienvenida</a>
+        <a href="#contenido">Contenido y Materiales</a>
+        <a href="#actividades">Actividades</a>
+        <a href="#evaluacion">Evaluación</a>
+        <a href="#cierre">Cierre</a>
+    </nav>
+
+    <div class="container">
+        <section id="bienvenida">
+            <h2>👋 Bienvenida</h2>
+            <p>¡Hola a todos! Bienvenidos a nuestra primera unidad. Hoy daremos los primeros pasos en uno de los lenguajes de programación más populares y demandados del mundo: Python.</p>
+            <p><strong>Objetivo de la unidad:</strong> Configurar nuestro entorno de trabajo, entender la sintaxis básica y escribir nuestro primer programa funcional.</p>
+        </section>
+
+        <section id="contenido">
+            <h2>📚 Contenido de Aprendizaje</h2>
+            <p>En lugar de instalar programas complejos, utilizaremos <strong>Google Colab</strong>, un laboratorio virtual que nos permite ejecutar Python directamente desde el navegador.</p>
+            
+            <h3>Conceptos Clave de Hoy:</h3>
+            <ul>
+                <li><strong>La función <code>print()</code>:</strong> Sirve para mostrar texto en pantalla.</li>
+                <li><strong>Variables:</strong> Cajas donde guardamos información (números, texto).</li>
+                <li><strong>Tipos de datos:</strong> Enteros (int), Cadenas de texto (str), Flotantes (float).</li>
+            </ul>
+
+            <h3>📖 Material Didáctico de Apoyo</h3>
+            <p>Para profundizar en los conceptos teóricos y guiarte paso a paso, descarga y revisa el material de lectura oficial de la unidad:</p>
+            <a href="https://drive.google.com/file/d/1H2Hu5Rte-WtcA4rb8BcyNO2DoXkQKFRs/view?usp=drive_link" target="_blank" class="btn" style="background-color: #d9480f;">📥 Descargar Material Educativo</a>
+
+            <h3 style="margin-top: 2rem;">📺 Video Explicativo</h3>
+            <p>A continuación, te invito a ver este video explicativo donde pondremos en práctica estos conceptos directamente en Google Colab:</p>
+
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/3f7-X1tN7u0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <section id="actividades">
+            <h2>⚙️ Actividades</h2>
+            <p>¡Es hora de codificar! Haz clic en el botón de abajo para abrir tu entorno de trabajo en Google Colab.</p>
+            <ol>
+                <li>Inicia sesión con tu cuenta de Google.</li>
+                <li>Crea un "Nuevo Cuaderno" (New Notebook).</li>
+                <li>Completa el <strong>Reto #1: Calculadora de Edad</strong>. Crea un programa que imprima tu nombre, tu edad actual y una variable que calcule tu año de nacimiento.</li>
+            </ol>
+            
+            <div class="button-group">
+                <a href="https://colab.research.google.com/" target="_blank" class="btn">🚀 Abrir Google Colab</a>
+                <a href="https://drive.google.com/file/d/1Ngf4mR1ScUH_OEh-lKvFYeOuQJQF3JkT/view?usp=drive_link" target="_blank" class="btn btn-secondary">🔍 Ver Ejercicio Resuelto (Retroalimentación)</a>
+            </div>
+        </section>
+
+        <section id="evaluacion">
+            <h2>📝 Evaluación</h2>
+            <p>Para comprobar lo aprendido, realizaremos un pequeño reto gamificado. Haz clic en el enlace para jugar en Kahoot.</p>
+            <a href="https://kahoot.it/solo?quizId=c08d5248-cbea-4232-948d-bf0f6d517646&gameMode=nano" target="_blank" class="btn" style="background-color: #46178f;">🎮 Jugar en Kahoot!</a>
+            <p style="margin-top: 15px;"><strong>Entrega final:</strong> Pega el enlace de tu Google Colab terminado (recuerda darle permisos de lectura) en el foro de la asignatura antes del viernes a las 11:59 PM.</p>
+        </section>
+
+        <section id="cierre">
+            <h2>🎯 Cierre de la Unidad</h2>
+            <p>¡Felicidades por llegar al final de esta unidad! Hoy has dejado de ser solo un usuario de tecnología para convertirte en un creador. Recuerda que la programación es un idioma, y como todo idioma, la clave está en la práctica constante.</p>
+            <p>Si te estancas en algún error de código, te animo a preguntarle a <strong>ChatGPT</strong>: <em>"¿Por qué este código de Python me da error de sintaxis?"</em>. ¡La IA es una excelente compañera de estudio para depurar tu código!</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Kalashnikov Bello Gómez (Matrícula: 100085476). Diseño de Unidad Didáctica Virtual - Desarrollo de Recursos Educativos Digitales (BIT-3230).</p>
+    </footer>
+
+</body>
+</html>
