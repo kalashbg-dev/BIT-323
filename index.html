@@ -21,7 +21,7 @@
             padding: 2.5rem 2rem; text-align: center;
         }
         .logo-uasd {
-            max-width: 120px; /* Tamaño ideal y responsivo para el logo */
+            max-width: 120px;
             height: auto;
             margin-bottom: 1rem;
             display: inline-block;
@@ -29,7 +29,7 @@
         nav {
             background-color: #002266; display: flex; justify-content: center;
             padding: 1rem; position: sticky; top: 0; z-index: 100;
-            flex-wrap: wrap; /* Para accesibilidad en móviles */
+            flex-wrap: wrap;
         }
         nav a {
             color: white; text-decoration: none; margin: 5px 15px;
@@ -74,12 +74,199 @@
             flex-wrap: wrap;
             gap: 10px;
         }
+
+        /* ==========================================================================
+           ESTILOS DEL MODAL DE JUSTIFICACIÓN DIDÁCTICA (NUEVO)
+           ========================================================================== */
+        .btn-flotante {
+            position: fixed; bottom: 20px; right: 20px; z-index: 1000;
+            background-color: #e65100; color: white; padding: 12px 24px;
+            border-radius: 50px; text-decoration: none; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;
+            border: 2px solid white; cursor: pointer; display: flex; align-items: center; gap: 8px;
+        }
+        .btn-flotante:hover { background-color: #bf360c; transform: scale(1.05); }
+        
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.7); z-index: 2000; display: none;
+            justify-content: center; align-items: center; backdrop-filter: blur(4px);
+        }
+        .modal-content {
+            background: white; width: 90%; max-width: 800px; height: 80vh;
+            border-radius: 12px; display: flex; flex-direction: column;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); animation: fadeIn 0.3s ease;
+            overflow: hidden;
+        }
+        .modal-header {
+            background: var(--primary-color); color: white; padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+        }
+        .modal-header h3 { color: white; margin: 0; font-size: 1.2rem; }
+        .close-modal {
+            background: none; border: none; color: white; font-size: 1.8rem;
+            cursor: pointer; line-height: 1;
+        }
+        .modal-body {
+            padding: 20px; overflow-y: auto; flex-grow: 1; font-size: 0.95rem;
+        }
+        
+        /* Sistema de Pestañas dentro del Modal */
+        .tabs { display: flex; background: #e0e0e0; border-bottom: 2px solid #ccc; }
+        .tab-btn {
+            flex: 1; padding: 12px; background: none; border: none; font-weight: bold;
+            color: #555; cursor: pointer; transition: all 0.2s; text-align: center;
+        }
+        .tab-btn.active { background: white; color: var(--primary-color); border-top: 3px solid var(--primary-color); }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* Tablas internas del reporte */
+        .reporte-table {
+            width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9rem;
+        }
+        .reporte-table th, .reporte-table td {
+            border: 1px solid #ddd; padding: 10px; text-align: left;
+        }
+        .reporte-table th { background-color: #002266; color: white; }
+        .reporte-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .badge { background: #2e7d32; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
 
+    <button class="btn-flotante" onclick="abrirModal()">📄 Justificación Didáctica (PDF)</button>
+
+    <div id="modalJustificacion" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>📋 Reporte Técnico y Pedagógico de la Unidad Didáctica</h3>
+                <button class="close-modal" onclick="cerrarModal()">&times;</button>
+            </div>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="cambiarPestaña(event, 'datos')">1. Contexto</button>
+                <button class="tab-btn" onclick="cambiarPestaña(event, 'programa')">2. Programa</button>
+                <button class="tab-btn" onclick="cambiarPestaña(event, 'diseno')">3. Estructura U1</button>
+                <button class="tab-btn" onclick="cambiarPestaña(event, 'evaluacion-tab')">4. Autoevaluación</button>
+            </div>
+
+            <div class="modal-body">
+                <div id="datos" class="tab-content active">
+                    <h4 style="color: var(--primary-color); margin-top: 0;">Diseño y Desarrollo de una Unidad Didáctica en Aula Virtual</h4>
+                    <p><strong>Autor:</strong> Kalashnikov Bello Gómez (Matrícula: 100085476)</p>
+                    <p><strong>Asignatura:</strong> Desarrollo de Recursos Educativos Digitales (BIT-3230)</p>
+                    <p><strong>Institución:</strong> Facultad de Ciencias de la Educación, Universidad Autónoma de Santo Domingo (UASD)</p>
+                    <p><strong>Fecha:</strong> 19 de mayo de 2026</p>
+                    <hr>
+                    <h4>Contexto Educativo</h4>
+                    <ul>
+                        <li><strong>Asignatura del Diseño:</strong> Fundamentos de Programación en Python.</li>
+                        <li><strong>Nivel Educativo:</strong> Universitario.</li>
+                        <li><strong>Contexto de Enseñanza:</strong> Educación a distancia (Modalidad virtual asincrónica con soporte sincrónico).</li>
+                        <li><strong>Competencia Principal:</strong> Aplica la lógica de programación y la sintaxis básica de Python para la resolución de problemas computacionales simples.</li>
+                    </ul>
+                </div>
+
+                <div id="programa" class="tab-content">
+                    <h4 style="color: var(--primary-color); margin-top: 0;">Estructura Sintética del Programa General</h4>
+                    <p><strong>Código:</strong> INF-101 | <strong>Duración:</strong> 4 semanas | <strong>Créditos:</strong> 3</p>
+                    <p><strong>Descripción general:</strong> Curso introductorio diseñado para proporcionar bases sólidas en la lógica de programación utilizando Python, preparando al estudiante para retos de ingeniería y análisis de datos.</p>
+                    <p><strong>Objetivos de la Asignatura:</strong> Comprender los conceptos fundamentales de la programación y escribir scripts básicos en Python.</p>
+                    <p><strong>Competencias y Resultados:</strong> El estudiante será capaz de declarar variables, utilizar estructuras de control (condicionales y bucles) y crear funciones básicas.</p>
+                    <p><strong>Estrategias Didácticas:</strong> Aprendizaje Basado en Proyectos (ABP), foros de discusión y resolución de retos asincrónicos.</p>
+                    <p><strong>Ecosistema Digital Planificado:</strong> GitHub Pages, Google Colab (laboratorio virtual), YouTube, ChatGPT (como tutor de depuración).</p>
+                </div>
+
+                <div id="diseno" class="tab-content">
+                    <h4 style="color: var(--primary-color); margin-top: 0;">Alineación Curricular - Unidad 1</h4>
+                    <p><strong>Título:</strong> Unidad 1: "¡Hola, Mundo! Tu primer encuentro con Python"</p>
+                    <p><strong>Propósito:</strong> Romper el hielo con la programación y lograr que el estudiante escriba y ejecute su primer código funcional.</p>
+                    
+                    <table class="reporte-table">
+                        <thead>
+                            <tr>
+                                <th>Elemento Didáctico</th>
+                                <th>Estrategia e Implementación en esta Web</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Activación de Saberes</strong></td>
+                                <td>Foro inicial sincrónico/asincrónico planteando la utilidad de los programas en el entorno cotidiano.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Desarrollo de Contenidos</strong></td>
+                                <td>Lecturas integradas directamente en el HTML y uso interactivo de Google Colab sin requerir instalación local.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Actividades de Aprendizaje</strong></td>
+                                <td>Reto #1: Crear un script que calcule la edad del usuario a partir de su año de nacimiento.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Evaluación Formativa / Sumativa</strong></td>
+                                <td>Formativa: Quiz interactivo en Kahoot. Sumativa: Entrega del enlace con permisos de lectura evaluado por lista de cotejo.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Recursos Complementarios</strong></td>
+                                <td>Uso de ChatGPT recomendado de forma guiada para explicar y depurar errores de sintaxis (Prompt Engineering básico).</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="evaluacion-tab" class="tab-content">
+                    <h4 style="color: var(--primary-color); margin-top: 0;">Lista de Cotejo y Control de Calidad Virtual</h4>
+                    <p>Autoevaluación del entorno web desarrollado según estándares de calidad de la Facultad de Ciencias de la Educación (UASD):</p>
+                    
+                    <table class="reporte-table">
+                        <thead>
+                            <tr>
+                                <th>Criterio de Calidad</th>
+                                <th>Estado</th>
+                                <th>Observaciones / Evidencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Claridad en objetivos y competencias</td>
+                                <td><span class="badge">Cumple</span></td>
+                                <td>Visibles en la sección "Bienvenida".</td>
+                            </tr>
+                            <tr>
+                                <td>2. Coherencia interna general</td>
+                                <td><span class="badge">Cumple</span></td>
+                                <td>Alineación total entre la teoría expuesta, las prácticas en Colab y el Kahoot.</td>
+                            </tr>
+                            <tr>
+                                <td>3. Originalidad de recursos</td>
+                                <td><span class="badge">Cumple</span></td>
+                                <td>Uso de GitHub Pages como entorno de distribución ágil en lugar de LMS tradicionales.</td>
+                            </tr>
+                            <tr>
+                                <td>4. Interactividad y accesibilidad</td>
+                                <td><span class="badge">Cumple</span></td>
+                                <td>Interfaz completamente responsive adaptada a dispositivos móviles con CSS3 moderno.</td>
+                            </tr>
+                            <tr>
+                                <td>5. Pertinencia del nivel</td>
+                                <td><span class="badge">Cumple</span></td>
+                                <td>Nivel de profundidad adecuado para introducción universitaria usando entornos en la nube e IA corporativa.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p style="margin-top: 15px; font-style: italic; font-size: 0.9rem;"><strong>Reflexión Final del Maestrante:</strong> La integración de repositorios de código (GitHub), laboratorios virtuales (Google Colab) y plataformas gamificadas (Kahoot) articula un ecosistema robusto que trasciende el aula tradicional, preparando a los futuros alumnos para los desafíos de la era digital.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <header>
-        <!-- Logo Institucional Centralizado -->
         <img src="uasd-logo.png" alt="Logo Universidad Autónoma de Santo Domingo" class="logo-uasd">
         <h1 style="margin-top: 0.5rem;">💻 Fundamentos de Python</h1>
         <p>Unidad 1: ¡Hola, Mundo! Tu primer encuentro con el código</p>
@@ -99,6 +286,10 @@
             <h2>👋 Bienvenida</h2>
             <p>¡Hola a todos! Bienvenidos a nuestra primera unidad. Hoy daremos los primeros pasos en uno de los lenguajes de programación más populares y demandados del mundo: Python.</p>
             <p><strong>Objetivo de la unidad:</strong> Configurar nuestro entorno de trabajo, entender la sintaxis básica y escribir nuestro primer programa funcional.</p>
+            
+            <p style="margin-top:20px; background: #fff3e0; padding: 10px; border-left: 4px solid #e65100; border-radius: 4px; font-size: 0.9rem;">
+                📌 <strong>Nota de evaluación:</strong> La documentación didáctica, justificación técnica, competencias de la asignatura y la lista de cotejo del reporte impreso se encuentran integradas para su revisión en el botón flotante <strong>"Justificación Didáctica"</strong> abajo a la derecha.
+            </p>
         </section>
 
         <section id="contenido">
@@ -157,5 +348,41 @@
         <p>&copy; 2026 Kalashnikov Bello Gómez (Matrícula: 100085476). Diseño de Unidad Didáctica Virtual - Desarrollo de Recursos Educativos Digitales (BIT-3230).</p>
     </footer>
 
+    <script>
+        function abrirModal() {
+            document.getElementById('modalJustificacion').style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Bloquea scroll del fondo
+        }
+
+        function cerrarModal() {
+            document.getElementById('modalJustificacion').style.display = 'none';
+            document.body.style.overflow = 'auto'; // Libera scroll
+        }
+
+        function cambiarPestaña(evt, nombrePestaña) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+
+            tablinks = document.getElementsByClassName("tab-btn");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+
+            document.getElementById(nombrePestaña).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+
+        // Cerrar modal haciendo clic fuera de la caja blanca
+        window.onclick = function(event) {
+            var modal = document.getElementById('modalJustificacion');
+            if (event.target == modal) {
+                cerrarModal();
+            }
+        }
+    </script>
 </body>
 </html>
